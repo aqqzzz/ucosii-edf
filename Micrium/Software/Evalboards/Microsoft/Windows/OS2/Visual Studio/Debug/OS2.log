@@ -1,0 +1,4 @@
+﻿  os_core.c
+e:\大三\第一学期\嵌入式\micrium_win32_os2\micrium\software\ucos-ii\source\os_core.c(1019): warning C4013: “printf”未定义；假设外部返回 int
+  OS2.vcxproj -> E:\大三\第一学期\嵌入式\Micrium_Win32_OS2\Micrium\Software\Evalboards\Microsoft\Windows\OS2\Visual Studio\Debug\OS2.exe
+  OS2.vcxproj -> E:\大三\第一学期\嵌入式\Micrium_Win32_OS2\Micrium\Software\Evalboards\Microsoft\Windows\OS2\Visual Studio\Debug\OS2.pdb (Full PDB)
