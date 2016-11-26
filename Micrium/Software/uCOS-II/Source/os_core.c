@@ -1011,7 +1011,7 @@ void  OSTimeTick (void)
 			((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->comp_time = ((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->c_value;
 			((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->end = OSTimeGet();
 			OSTCBCur->OSTCBDly = ((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->ddl - (((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->end - ((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->start);
-			//更新TCB数据之后是调用哪个函数更新指向的TCB的？
+			
 
 			((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->start = ((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->start + ((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->p_value;
 
@@ -1797,7 +1797,8 @@ static void OS_SchedEDF(void) {
 
 	p_current = OSTCBList;
 
-	edf_ptcb = OSTCBPrioTbl[OS_TASK_IDLE_PRIO];//如果什么都不做的话应该指向空闲任务 （OSTCBPrioTbl[OS_TASK_IDLE_PRIO]即为系统中的空闲任务）
+	edf_ptcb = OSTCBPrioTbl[OS_TASK_IDLE_PRIO];
+	//如果什么都不做的话应该指向空闲任务 （OSTCBPrioTbl[OS_TASK_IDLE_PRIO]即为系统中的空闲任务）
 	OSPrioHighRdy = OS_TASK_IDLE_PRIO;
 //	APP_TRACE("\n In os_schedEDF, curent id:%d, delay:%d", OSTCBCur->OSTCBId, OSTCBCur->OSTCBDly);
 //	APP_TRACE(", OS_TASK_IDLE_PRIO: %d, id: %d", OS_TASK_IDLE_PRIO, OSTCBPrioTbl[OS_TASK_IDLE_PRIO]->OSTCBId);

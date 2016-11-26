@@ -1,4 +1,33 @@
-﻿  os_core.c
+﻿  app_hooks.c
+  app.c
+e:\大三\第一学期\嵌入式\micrium_win32_os2\micrium\software\evalboards\microsoft\windows\os2\app.c(199): warning C4087: “OSTimeGet”: 用“void”参数列表声明
+e:\大三\第一学期\嵌入式\micrium_win32_os2\micrium\software\evalboards\microsoft\windows\os2\app.c(205): warning C4101: “end”: 未引用的局部变量
+e:\大三\第一学期\嵌入式\micrium_win32_os2\micrium\software\evalboards\microsoft\windows\os2\app.c(206): warning C4101: “to_delay”: 未引用的局部变量
+e:\大三\第一学期\嵌入式\micrium_win32_os2\micrium\software\evalboards\microsoft\windows\os2\app.c(229): warning C4101: “end”: 未引用的局部变量
+e:\大三\第一学期\嵌入式\micrium_win32_os2\micrium\software\evalboards\microsoft\windows\os2\app.c(230): warning C4101: “to_delay”: 未引用的局部变量
+  cpu_bsp.c
+  bsp.c
+  os_tmr.c
+  os_time.c
+  os_task.c
+  os_sem.c
+  os_q.c
+  os_mutex.c
+  os_mem.c
+  os_mbox.c
+  os_flag.c
+  os_dbg_r.c
+  os_core.c
 e:\大三\第一学期\嵌入式\micrium_win32_os2\micrium\software\ucos-ii\source\os_core.c(1019): warning C4013: “printf”未定义；假设外部返回 int
+  os_cpu_c.c
+  lib_str.c
+  lib_mem.c
+  lib_math.c
+  lib_ascii.c
+  正在生成代码...
+  正在编译...
+  cpu_c.c
+  cpu_core.c
+  正在生成代码...
   OS2.vcxproj -> E:\大三\第一学期\嵌入式\Micrium_Win32_OS2\Micrium\Software\Evalboards\Microsoft\Windows\OS2\Visual Studio\Debug\OS2.exe
   OS2.vcxproj -> E:\大三\第一学期\嵌入式\Micrium_Win32_OS2\Micrium\Software\Evalboards\Microsoft\Windows\OS2\Visual Studio\Debug\OS2.pdb (Full PDB)

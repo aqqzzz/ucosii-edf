@@ -51,16 +51,12 @@ my definitions
 /*---   priorities ---*/
 #define TASK_1_PRIO		21
 #define TASK_2_PRIO		22
-#define TASK_3_PRIO		23
-#define TASK_4_PRIO		24
-#define TASK_5_PRIO		25
+
 
 /*---   task IDs ---*/
 #define TASK_1_ID		1
 #define TASK_2_ID		2
-#define TASK_3_ID		3
-#define TASK_4_ID		4
-#define TASK_5_ID		5
+
 
 /*
 *********************************************************************************************************
@@ -89,14 +85,12 @@ OS_STK TASK4STK[TASK_STK_SIZE];
 OS_STK TASK5STK[TASK_STK_SIZE];
 
 /*---   edf_datas ---*/
-// EDF_DATA{c_value,p_value,comp_time,ddl]
+// EDF_DATA{c_value,p_value,comp_time,ddl,start,end]
 EDF_DATA edf_datas[] =
 {
 	{ 1,3,1,4,1,1 },
 	{ 3,5,3,6,1,1 },
-	{ 1,4,1,4,1,1 },
-	{ 2,5,2,5,1,1 },
-	{ 2,10,2,10,1,1 },
+
 };
 
 
@@ -114,9 +108,6 @@ my function prototypes
 */
 static void task1(void* pdata);
 static void task2(void* pdata);
-static void task3(void* pdata);
-static void task4(void* pdata);
-static void task5(void* pdata);
 
 
 /*
@@ -213,8 +204,6 @@ static void task1(void *pdata) {
 	INT32U start;
 	INT32U end;
 	INT32U to_delay;
-	//BSP_Init();
-	//CPU_Init();
 	OSTimeDly(1);
 	start = 0;
 	for (;;) {
