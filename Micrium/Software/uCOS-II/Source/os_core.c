@@ -1010,7 +1010,7 @@ void  OSTimeTick (void)
 			((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->ddl = ((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->ddl + ((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->p_value;
 			((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->comp_time = ((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->c_value;
 			((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->end = OSTimeGet();
-			OSTCBCur->OSTCBDly = ((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->ddl - (((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->end - ((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->start);
+			OSTCBCur->OSTCBDly = ((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->p_value - (((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->end - ((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->start);
 			
 
 			((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->start = ((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->start + ((EDF_DATA*)OSTCBCur->OSTCBExtPtr)->p_value;
@@ -1838,9 +1838,8 @@ static INT32U getEDFNextID(void) {
 	INT32U nextId = 0;
 
 	p_current = OSTCBList;
-	//
 	edf_ptcb = OSTCBPrioTbl[OS_TASK_IDLE_PRIO];//如果什么都不做的话应该指向空闲任务 （OSTCBPrioTbl[OS_TASK_IDLE_PRIO]即为系统中的空闲任务）
-	OSPrioHighRdy = OS_TASK_IDLE_PRIO;
+	OS_ENTER_CRITICAL();
 	//APP_TRACE("\n In os_schedEDF, curent id:%d, delay:%d", OSTCBCur->OSTCBId, OSTCBCur->OSTCBDly);
 
 	while ((p_current->OSTCBPrio != OS_TASK_IDLE_PRIO)&&(p_current->OSTCBExtPtr!=0x00000000)) {
@@ -1857,12 +1856,15 @@ static INT32U getEDFNextID(void) {
 		p_current = p_current->OSTCBNext;
 	}
 
+	nextId = edf_ptcb->OSTCBId;
+
 	if (isAllDelay == 1) {
 		//如果当前任务即为优先级最高的任务,则应将最高优先级的任务指向空闲任务，由于前面初始化时edf_ptcb指向的就是空闲任务，所以不需要再次赋值
 		//edf_ptcb=OSTCBPrioTbl[OS_TASK_IDLE_PRIO];
+		
 	}
 
-	nextId = edf_ptcb->OSTCBId;
+	OS_EXIT_CRITICAL();
 	return nextId;
 
 }
